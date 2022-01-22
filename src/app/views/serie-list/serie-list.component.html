@@ -1,0 +1,46 @@
+<div class="col-10 mx-auto">
+  <div class="d-flex justify-content-between mb-3">
+    <h2>NOS SÉRIES</h2>
+    <a class="btn btn-success btn-lg" [routerLink]="['/series', 'new']"
+      >NOUVELLE SÉRIE
+    </a>
+  </div>
+
+  <h3 *ngIf="series.length === 0" class="text-center my-5">
+    Il n'y a pas encore d'séries !
+  </h3>
+
+  <div *ngFor="let serie of series; index as i" class="card mb-3 h-100">
+    <div class="row g-0">
+      <div class="col-md-4 mx-auto my-auto">
+        <img [src]="serie.imgUrl" style="width: 75%" />
+      </div>
+      <div class="col-md-6">
+        <div class="card-body">
+          <h5 class="card-title">#{{ serie.id }}</h5>
+          <p class="card-text">{{ serie.name }}</p>
+          <p class="card-text">
+            Date de la première diffusion: {{ serie.dateBegin | date: "yyyy" }}
+          </p>
+        </div>
+      </div>
+      <div class="col-md-2 align-self-center">
+        <a [routerLink]="['/series', serie.id]" class="btn btn-dark btn-lg my-1"
+          >DÉTAILS
+        </a>
+        <a
+          [routerLink]="['/series', 'edit', serie.id]"
+          class="btn btn-warning btn-lg my-1"
+          >EDIT
+        </a>
+        <br />
+        <button
+          (click)="onClickDeleteSerie(i)"
+          class="btn btn-danger btn-lg my-1"
+        >
+          SUPP.
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

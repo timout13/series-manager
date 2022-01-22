@@ -1,0 +1,13 @@
+<div class="px-4 pt-5 mb-5 text-center">
+  <h1 class="display-5 fw-bold">Series Manager</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead mb-4">L'application qui manage vos séries préférées !</p>
+    <button
+      *ngIf="isConnected"
+      (click)="onClickSignOut()"
+      class="btn btn-outline-dark mx-2 position-absolute top-0 end-0 mt-2"
+    >
+      ME DÉCONNECTER
+    </button>
+  </div>
+</div>

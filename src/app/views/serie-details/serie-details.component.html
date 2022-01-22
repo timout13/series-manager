@@ -1,0 +1,31 @@
+<div class="row col-6 card shadow mx-auto mb-5">
+  <div class="card-body text-center">
+    <h5 class="card-title">
+      {{ series.name }} ( {{ series.dateBegin | date: "MM-dd-yyyy" }} )
+    </h5>
+    <img [src]="series.imgUrl" class="card-img-top" />
+    <p class="card-text">Nombres de Saisons :</p>
+    <p class="card-text">{{ series.nbSeason }}</p>
+    <hr />
+    <p class="card-text">Description :</p>
+    <p class="card-text">{{ series.description }}</p>
+    <hr />
+    <p class="card-text">Review de la presse :</p>
+    <p class="card-text">{{ series.review }}</p>
+    <hr />
+    <p class="card-text">Commentaires :</p>
+    <div *ngFor="let serie of series.commments" class="card h-100 mb-5">
+      <p class="card-text my-5">{{ serie.content }}</p>
+      <hr />
+      <p class="card-footer text-muted border-0 bg-white text-end">
+        Écrit le {{ serie.date | date: "dd-MM-yyyy" }} par
+        {{ serie.author }}
+      </p>
+    </div>
+    <app-comment-form
+      (formSubmitted)="createComment($event, series)"
+    ></app-comment-form>
+
+    <button routerLink="/series" class="btn btn-dark mt-2">RETOUR</button>
+  </div>
+</div>

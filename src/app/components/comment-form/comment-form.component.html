@@ -1,0 +1,26 @@
+<form [formGroup]="form" (ngSubmit)="onSubmitCommentForm()">
+  <div class="form-group mb-4">
+    <label for="author">Entrer votre pseudo :</label>
+    <input
+      id="author"
+      class="form-control"
+      formControlName="author"
+      [(ngModel)]="comments.author"
+    />
+  </div>
+  <div class="form-group mb-4">
+    <label for="content">Ajouter votre commmentaire :</label>
+    <textarea
+      id="content"
+      class="form-control"
+      formControlName="content"
+      [(ngModel)]="comments.content"
+    ></textarea>
+  </div>
+
+  <div class="row col-4 mx-auto mt-3">
+    <button type="submit" class="btn btn-dark" [disabled]="form.invalid">
+      AJOUTER
+    </button>
+  </div>
+</form>
